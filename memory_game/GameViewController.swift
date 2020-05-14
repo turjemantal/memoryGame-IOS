@@ -9,7 +9,7 @@
 import UIKit
 
 class GameViewController: UIViewController {
-    
+    //TODO: delete vars and unconnect them to the buttons
     //vars
     @IBOutlet weak var game_IMG_card0: UIButton!
     @IBOutlet weak var game_IMG_card1: UIButton!
@@ -37,7 +37,7 @@ class GameViewController: UIViewController {
     private var pairedSuccessfully: Int = 0//how many cards are paired
     private var score = 0
     private var isPlaying = false
-    private var isUserWon = false
+//    private var isUserWon: Bool
     private var imagesCounter = Array(repeating: 0, count: 8)
     private var imageInPlace: [(image: UIImage,isOpen: Bool)] = []//array of tuple of image and if the card is open -> the index represent the card tag(simulate its' location)
     private var cards: [UIButton] = []
@@ -49,19 +49,34 @@ class GameViewController: UIViewController {
     private let back_card = #imageLiteral(resourceName: "icon_square")
     private let cardMatrixSize = 16 //4*4
     private let numOfImageDuplicate = 2
-    private let moves = 20
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         game_LBL_moves.text = String(numOfMoves)
         game_LBL_timer.text = String(0) + " S"
-       
-
+        
+        
     }
     //functions/actions...
     
-    func initCards() {
+    func resetCards() {
+        for i in 0..<imagesCounter.count {
+            imagesCounter[i] = 0
+        }
+    }
+    
+    func initGame() {
+        resetCards()
+        shuffleCards()
+        score = 0
+        pairedSuccessfully = 0
+        numOfMoves = 20
+//        isUserWon = false
+        setTimer(on: true)
+    }
+    
+    func shuffleCards() {
         //tag is the index i
         for i in 0..<cardMatrixSize {
             var rndCardImg = Int.random(in: 0 ..< images.count)
@@ -71,8 +86,8 @@ class GameViewController: UIViewController {
                 rndCardImg = Int.random(in: 0 ..< images.count)
             }
             imageInPlace.append((image: images[rndCardImg], isOpen: false))
-            print("----- i ")
-            print(i)
+            print("----- i ")//TODO: delete
+            print(i)//TODO: delete
             print(images[rndCardImg].description)
             imagesCounter[rndCardImg] += 1
             //               print("----- image counter ")
@@ -82,6 +97,7 @@ class GameViewController: UIViewController {
     
     func checkMatch(previous: UIButton, current: UIButton){
         if(imageInPlace[previous.tag].image == imageInPlace[current.tag].image && previous.tag != current.tag && imageInPlace[previous.tag].isOpen && imageInPlace[current.tag].isOpen) {
+            
             print(imageInPlace[previous.tag].image.description)//delete
             print(imageInPlace[current.tag].image.description)//delete
             
@@ -95,7 +111,7 @@ class GameViewController: UIViewController {
             score += 10
             game_LBL_score.text = "Score: " + String(score)
         }
-        else {
+        else {//TODO: handle case if pressed on the same card
             if(previous.tag != current.tag){
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                     self.closeCard(card: previous)
@@ -105,7 +121,6 @@ class GameViewController: UIViewController {
             if(previous.tag == current.tag){
                 print("Clicked on the same card")
             }
-            //TODO: need to count num of moves
         }
     }
     
@@ -125,25 +140,22 @@ class GameViewController: UIViewController {
     
     func setTimer(on: Bool) {
         var duration = 0
-        if(on) {
+        if(on) {//run timer each second
             timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
-                duration += 1
                 self.game_LBL_timer.text = String(duration) + " S"
+                duration += 1
             }
         }
         else {
-            timer.invalidate()
+            timer.invalidate()//pause
         }
     }
     
     @IBAction func clickPlayGame(_ sender: UIButton) {
         if(!isPlaying) {
-            initCards()
-            pairedSuccessfully = 0
-            numOfMoves = moves
-            setTimer(on: true)
-            isPlaying = true
+            initGame()
             game_BTN_play.isHidden = true
+            isPlaying = true
         }
         else {
             isPlaying = false
@@ -152,16 +164,16 @@ class GameViewController: UIViewController {
     }
     
     func checkIfWinner() {
-        if(pairedSuccessfully == cardMatrixSize/numOfImageDuplicate) {//if the user matched all of the cards
+        if(pairedSuccessfully == cardMatrixSize/numOfImageDuplicate) {//if the user matched all of the cards-> he wons
             setTimer(on: false)
             game_BTN_play.setTitle("YOU WON!\nPlay again", for: .normal)
             game_BTN_play.isHidden = false
-            isUserWon = true
+//            isUserWon = true
             isPlaying = false
         }
         else if(numOfMoves == 0){//if he lost -> ran out of moves
             setTimer(on: false)
-            isUserWon = false
+//            isUserWon = false
             isPlaying = false
             game_BTN_play.setTitle("YOU LOST\nPlay again", for: .normal)
             game_BTN_play.isHidden = false
@@ -171,7 +183,6 @@ class GameViewController: UIViewController {
     @IBAction func button_clicked(_ sender: UIButton) {
         
         if(isPlaying) {
-            
             counter += 1 //amount of button clicks
             print(counter)
             openCard(card: sender)
@@ -187,7 +198,7 @@ class GameViewController: UIViewController {
             }
             previousButton = sender
         }
-         checkIfWinner()
+        checkIfWinner()
     }
     
 }
