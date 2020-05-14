@@ -154,20 +154,18 @@
                                         </subviews>
                                     </stackView>
                                 </subviews>
-                                <variation key="heightClass=compact-widthClass=regular" axis="horizontal"/>
-                                <variation key="heightClass=regular-widthClass=regular" axis="horizontal"/>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="top" spacing="215" translatesAutoresizingMaskIntoConstraints="NO" id="0Jt-a0-fHo" userLabel="score and timer stack">
-                                <rect key="frame" x="28" y="62.5" width="376" height="31.5"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="230" translatesAutoresizingMaskIntoConstraints="NO" id="0Jt-a0-fHo" userLabel="score and timer stack">
+                                <rect key="frame" x="10" y="62.5" width="394" height="31.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="score: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bu5-tR-JWN" userLabel="score">
-                                        <rect key="frame" x="0.0" y="0.0" width="87" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="87" height="31.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ysc-kA-IJ2" userLabel="timer">
-                                        <rect key="frame" x="302" y="0.0" width="74" height="31.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 S" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ysc-kA-IJ2" userLabel="timer">
+                                        <rect key="frame" x="355.5" y="0.0" width="38.5" height="31.5"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="26"/>
                                         <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                         <nil key="highlightedColor"/>
@@ -210,14 +208,15 @@
                             <constraint firstItem="Xxx-w2-u4Q" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="8OF-DZ-um3"/>
                             <constraint firstItem="HLW-xU-gzu" firstAttribute="top" secondItem="Xxx-w2-u4Q" secondAttribute="bottom" constant="30" id="8bP-5w-Cf9"/>
                             <constraint firstAttribute="bottom" secondItem="42k-qI-KMS" secondAttribute="bottom" id="DYk-KO-hry"/>
+                            <constraint firstItem="HLW-xU-gzu" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Hqk-hK-sCc"/>
                             <constraint firstItem="Xxx-w2-u4Q" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="80" id="MBU-Bg-28l"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="0Jt-a0-fHo" secondAttribute="trailing" constant="10" id="RRX-oq-YBW"/>
                             <constraint firstItem="42k-qI-KMS" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="ZK3-rT-sTp"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Xxx-w2-u4Q" secondAttribute="trailing" constant="20" id="a3V-bY-wjg"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="HLW-xU-gzu" secondAttribute="trailing" constant="20" id="azc-JT-U2r"/>
+                            <constraint firstItem="0Jt-a0-fHo" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="edK-D9-rC8"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="HLW-xU-gzu" secondAttribute="bottom" constant="10" id="gG2-Kq-QoM"/>
                             <constraint firstAttribute="trailing" secondItem="42k-qI-KMS" secondAttribute="trailing" id="mMw-e0-ewW"/>
-                            <constraint firstItem="Xxx-w2-u4Q" firstAttribute="height" secondItem="6Tk-OE-BBY" secondAttribute="height" multiplier="0.559902" id="oaG-LO-xtO"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Xxx-w2-u4Q" secondAttribute="bottom" constant="280" id="q2k-tm-IQe"/>
                             <constraint firstItem="HLW-xU-gzu" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="qCW-V3-Ase"/>
                             <constraint firstItem="Xxx-w2-u4Q" firstAttribute="top" secondItem="0Jt-a0-fHo" secondAttribute="bottom" constant="30" id="qgR-Lm-bjI"/>
