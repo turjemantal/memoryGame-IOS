@@ -22,14 +22,13 @@ class GameViewController: UIViewController {
     private var pairedSuccessfully: Int = 0//how many cards are paired
     private var score = 0
     private var isPlaying = false
-    //    private var isUserWon: Bool
     private var imagesCounter = Array(repeating: 0, count: 8)
     private var imageInPlace: [(image: UIImage, isOpen: Bool)] = []//array of tuple of image and if the card is open -> the index represent the card tag(simulate its' location)
     private var cards: [UIButton] = []
     private var counter: Int = 0//pressing cards counter
     private var timer = Timer()
     private var numOfMoves: Int = 20
-    
+    //Const
     private let images = [#imageLiteral(resourceName: "ic_chicken") ,#imageLiteral(resourceName: "ic_burger") ,#imageLiteral(resourceName: "ic_fries") ,#imageLiteral(resourceName: "ic_broccoli") ,#imageLiteral(resourceName: "ic_chocolate") ,#imageLiteral(resourceName: "ic_sushi") ,#imageLiteral(resourceName: "ic_cake") ,#imageLiteral(resourceName: "ic_pizza")]
     private let back_card = #imageLiteral(resourceName: "icon_square")
     private let cardMatrixSize = 16 //4*4
@@ -38,16 +37,15 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        initGame()
         setGameLabels()
-        //        for card in game_BTN_cards {
-        ////           closeCard(card: card)
-        //        }
     }
     //functions/actions...
     func resetCards() {
         for i in 0..<imagesCounter.count {
             imagesCounter[i] = 0
         }
+        imageInPlace.removeAll()//remove all current card to image randomly allocations
     }
     
     func setGameLabels() {
@@ -57,14 +55,15 @@ class GameViewController: UIViewController {
     }
     
     func initGame() {
-        resetCards()
-        shuffleCards()
         score = 0
         pairedSuccessfully = 0
-        numOfMoves = 2
-        //        isUserWon = false
+        numOfMoves = 20
+        
         setGameLabels()
+        resetCards()
+        shuffleCards()
         setTimer(on: true)
+        
         for card in game_BTN_cards {
             card.isEnabled = true
             closeCard(card: card)
@@ -72,40 +71,27 @@ class GameViewController: UIViewController {
     }
     
     func shuffleCards() {
-        var rndCardImg: Int = Int.random(in: 0 ..< images.count)
+        var rndCardImg: Int
         //tag is the index i in the imageInPlace array
+        //image counter represent how many times image is being assign -> need only twice
         for _ in 0..<cardMatrixSize {
-            //TODO: each time rand new places for images
-            //            var rndCardImg = Int.random(in: 0 ..< images.count)
-            //            print(rndCardImg)
             //checking if the image is presented twice
             repeat{
                 rndCardImg = Int.random(in: 0 ..< images.count)
-                print("random num= \(rndCardImg)")
-                print(images[rndCardImg].description)
-            } while (imagesCounter[rndCardImg] >= numOfImageDuplicate) //if the image already been place twice-> rand different image
-            //                            rndCardImg = Int.random(in: 0 ..< images.count)
-            //            while (imagesCounter[rndCardImg] >= numOfImageDuplicate){
-            //                rndCardImg = Int.random(in: 0 ..< images.count)
-            //            }
+            } while (imagesCounter[rndCardImg] >= numOfImageDuplicate); //if the image already been place twice-> rand different image
             
+            //puts in imageInPlace in index (=button tag) the image that has been selected randomly
             imageInPlace.append((image: images[rndCardImg], isOpen: false))
             imagesCounter[rndCardImg] += 1
+            
         }
     }
     
     func checkMatch(previous: UIButton, current: UIButton){
         if(imageInPlace[previous.tag].image == imageInPlace[current.tag].image && previous.tag != current.tag && imageInPlace[previous.tag].isOpen && imageInPlace[current.tag].isOpen) {
-            
-            print(imageInPlace[previous.tag].image.description)//delete
-            print(imageInPlace[current.tag].image.description)//delete
-            
             pairedSuccessfully += 1
             previous.isEnabled = false
             current.isEnabled = false
-            
-            //            print(pairedSuccessfully)//TODO: delete
-            //            print("MATCH!! ")//TODO: delte
             score += 10 //add 10 points when cards are being paired successfully
             game_LBL_score.text = "Score: " + String(score)
         }
@@ -134,11 +120,11 @@ class GameViewController: UIViewController {
     }
     
     func setTimer(on: Bool) {
-        var duration = 0
         if(on) {//run timer each second
+            var duration = 0
             timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
-                self.game_LBL_timer.text = String(duration) + " S"
                 duration += 1
+                self.game_LBL_timer.text = String(duration) + " S"
             }
         }
         else {
@@ -160,17 +146,23 @@ class GameViewController: UIViewController {
     
     func checkIfWinner() {
         if(pairedSuccessfully == cardMatrixSize/numOfImageDuplicate) {//if the user matched all of the cards-> he wons
-            setTimer(on: false)
-            game_BTN_play.setTitle("YOU WON!\nPlay again", for: .normal)
-            game_BTN_play.isHidden = false
-            //            isUserWon = true
-            isPlaying = false
+            setGameWhenStop(isUserWon: true)
         }
         else if(numOfMoves == 0){//if he lost -> ran out of moves
-            setTimer(on: false)
-            isPlaying = false
+            setGameWhenStop(isUserWon: false)
+        }
+    }
+    
+    func setGameWhenStop(isUserWon: Bool) {//if the game is ended
+        setTimer(on: false)//pause timer
+        game_BTN_play.isHidden = false
+        isPlaying = false
+        
+        if(isUserWon) {
+            game_BTN_play.setTitle("YOU WON!\nPlay again", for: .normal)
+        }
+        else {
             game_BTN_play.setTitle("YOU LOST\nPlay again", for: .normal)
-            game_BTN_play.isHidden = false
         }
     }
     
