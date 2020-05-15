@@ -225,25 +225,25 @@
                     </view>
                     <connections>
                         <outlet property="game_BTN_play" destination="boX-0z-1xM" id="f2k-uh-XKv"/>
-                        <outlet property="game_IMG_card0" destination="FV9-p9-eeF" id="xqL-jI-QJK"/>
-                        <outlet property="game_IMG_card1" destination="zTc-lV-9YC" id="lKb-AH-8aK"/>
-                        <outlet property="game_IMG_card10" destination="pce-cE-A6h" id="wF3-6k-lVw"/>
-                        <outlet property="game_IMG_card11" destination="6jT-qp-j4f" id="bfg-Y2-zh6"/>
-                        <outlet property="game_IMG_card12" destination="fEp-WU-zHA" id="uby-VI-HWb"/>
-                        <outlet property="game_IMG_card13" destination="CS3-c9-RSn" id="7Zi-o0-epM"/>
-                        <outlet property="game_IMG_card14" destination="gt7-uv-06q" id="rgd-JG-DQV"/>
-                        <outlet property="game_IMG_card15" destination="mUX-OK-L9s" id="iUh-Mg-CgE"/>
-                        <outlet property="game_IMG_card2" destination="e7x-th-ulj" id="Jhi-3c-UMb"/>
-                        <outlet property="game_IMG_card3" destination="QCm-6J-X3s" id="dwc-qU-46J"/>
-                        <outlet property="game_IMG_card4" destination="Tzr-wM-jZv" id="4vI-I8-0QA"/>
-                        <outlet property="game_IMG_card5" destination="eC4-2V-fBD" id="C7h-lo-uJM"/>
-                        <outlet property="game_IMG_card6" destination="ae0-ko-yya" id="JrT-jD-Eu4"/>
-                        <outlet property="game_IMG_card7" destination="t5p-pL-jYY" id="hwm-Mx-1ss"/>
-                        <outlet property="game_IMG_card8" destination="u5k-6a-Jeh" id="W9f-w4-Q13"/>
-                        <outlet property="game_IMG_card9" destination="Iva-Br-dME" id="ePk-f0-pzo"/>
                         <outlet property="game_LBL_moves" destination="6KK-sU-0cN" id="IYc-wa-F38"/>
                         <outlet property="game_LBL_score" destination="Bu5-tR-JWN" id="ncD-0B-4Bo"/>
                         <outlet property="game_LBL_timer" destination="Ysc-kA-IJ2" id="35S-Xu-JRZ"/>
+                        <outletCollection property="game_BTN_cards" destination="QCm-6J-X3s" collectionClass="NSMutableArray" id="KPW-rj-Fdh"/>
+                        <outletCollection property="game_BTN_cards" destination="FV9-p9-eeF" collectionClass="NSMutableArray" id="bh9-V3-sYO"/>
+                        <outletCollection property="game_BTN_cards" destination="zTc-lV-9YC" collectionClass="NSMutableArray" id="Bw1-0h-p6C"/>
+                        <outletCollection property="game_BTN_cards" destination="e7x-th-ulj" collectionClass="NSMutableArray" id="d48-8s-xkt"/>
+                        <outletCollection property="game_BTN_cards" destination="Tzr-wM-jZv" collectionClass="NSMutableArray" id="ojs-oe-RQ1"/>
+                        <outletCollection property="game_BTN_cards" destination="eC4-2V-fBD" collectionClass="NSMutableArray" id="PIa-TY-zbM"/>
+                        <outletCollection property="game_BTN_cards" destination="ae0-ko-yya" collectionClass="NSMutableArray" id="GlE-xI-wib"/>
+                        <outletCollection property="game_BTN_cards" destination="t5p-pL-jYY" collectionClass="NSMutableArray" id="plt-ft-wel"/>
+                        <outletCollection property="game_BTN_cards" destination="6jT-qp-j4f" collectionClass="NSMutableArray" id="nkH-7q-3h4"/>
+                        <outletCollection property="game_BTN_cards" destination="pce-cE-A6h" collectionClass="NSMutableArray" id="uXm-Ex-jF6"/>
+                        <outletCollection property="game_BTN_cards" destination="Iva-Br-dME" collectionClass="NSMutableArray" id="JLL-uQ-Fv5"/>
+                        <outletCollection property="game_BTN_cards" destination="u5k-6a-Jeh" collectionClass="NSMutableArray" id="OmL-pu-FfO"/>
+                        <outletCollection property="game_BTN_cards" destination="mUX-OK-L9s" collectionClass="NSMutableArray" id="7PM-zx-M0C"/>
+                        <outletCollection property="game_BTN_cards" destination="gt7-uv-06q" collectionClass="NSMutableArray" id="ciR-V5-guc"/>
+                        <outletCollection property="game_BTN_cards" destination="CS3-c9-RSn" collectionClass="NSMutableArray" id="ubk-vw-0Zn"/>
+                        <outletCollection property="game_BTN_cards" destination="fEp-WU-zHA" collectionClass="NSMutableArray" id="mWo-VG-Nyi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

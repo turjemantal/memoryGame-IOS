@@ -9,24 +9,9 @@
 import UIKit
 
 class GameViewController: UIViewController {
-    //TODO: delete vars and unconnect them to the buttons
+    
     //vars
-    @IBOutlet weak var game_IMG_card0: UIButton!
-    @IBOutlet weak var game_IMG_card1: UIButton!
-    @IBOutlet weak var game_IMG_card2: UIButton!
-    @IBOutlet weak var game_IMG_card3: UIButton!
-    @IBOutlet weak var game_IMG_card4: UIButton!
-    @IBOutlet weak var game_IMG_card5: UIButton!
-    @IBOutlet weak var game_IMG_card6: UIButton!
-    @IBOutlet weak var game_IMG_card7: UIButton!
-    @IBOutlet weak var game_IMG_card8: UIButton!
-    @IBOutlet weak var game_IMG_card9: UIButton!
-    @IBOutlet weak var game_IMG_card10: UIButton!
-    @IBOutlet weak var game_IMG_card11: UIButton!
-    @IBOutlet weak var game_IMG_card12: UIButton!
-    @IBOutlet weak var game_IMG_card13: UIButton!
-    @IBOutlet weak var game_IMG_card14: UIButton!
-    @IBOutlet weak var game_IMG_card15: UIButton!
+    @IBOutlet var game_BTN_cards: [UIButton]!//collection of all the card buttons
     @IBOutlet weak var game_LBL_timer: UILabel!
     @IBOutlet weak var game_LBL_moves: UILabel!
     @IBOutlet weak var game_LBL_score: UILabel!
@@ -37,15 +22,15 @@ class GameViewController: UIViewController {
     private var pairedSuccessfully: Int = 0//how many cards are paired
     private var score = 0
     private var isPlaying = false
-//    private var isUserWon: Bool
+    //    private var isUserWon: Bool
     private var imagesCounter = Array(repeating: 0, count: 8)
-    private var imageInPlace: [(image: UIImage,isOpen: Bool)] = []//array of tuple of image and if the card is open -> the index represent the card tag(simulate its' location)
+    private var imageInPlace: [(image: UIImage, isOpen: Bool)] = []//array of tuple of image and if the card is open -> the index represent the card tag(simulate its' location)
     private var cards: [UIButton] = []
     private var counter: Int = 0//pressing cards counter
     private var timer = Timer()
+    private var numOfMoves: Int = 20
     
     private let images = [#imageLiteral(resourceName: "ic_chicken") ,#imageLiteral(resourceName: "ic_burger") ,#imageLiteral(resourceName: "ic_fries") ,#imageLiteral(resourceName: "ic_broccoli") ,#imageLiteral(resourceName: "ic_chocolate") ,#imageLiteral(resourceName: "ic_sushi") ,#imageLiteral(resourceName: "ic_cake") ,#imageLiteral(resourceName: "ic_pizza")]
-    private var numOfMoves: Int = 20
     private let back_card = #imageLiteral(resourceName: "icon_square")
     private let cardMatrixSize = 16 //4*4
     private let numOfImageDuplicate = 2
@@ -53,17 +38,22 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        game_LBL_moves.text = String(numOfMoves)
-        game_LBL_timer.text = String(0) + " S"
-        
-        
+        setGameLabels()
+        //        for card in game_BTN_cards {
+        ////           closeCard(card: card)
+        //        }
     }
     //functions/actions...
-    
     func resetCards() {
         for i in 0..<imagesCounter.count {
             imagesCounter[i] = 0
         }
+    }
+    
+    func setGameLabels() {
+        game_LBL_moves.text = String(numOfMoves)
+        game_LBL_timer.text = String(0) + " S"
+        game_LBL_score.text = "Score: 0"
     }
     
     func initGame() {
@@ -71,27 +61,36 @@ class GameViewController: UIViewController {
         shuffleCards()
         score = 0
         pairedSuccessfully = 0
-        numOfMoves = 20
-//        isUserWon = false
+        numOfMoves = 2
+        //        isUserWon = false
+        setGameLabels()
         setTimer(on: true)
+        for card in game_BTN_cards {
+            card.isEnabled = true
+            closeCard(card: card)
+        }
     }
     
     func shuffleCards() {
-        //tag is the index i
-        for i in 0..<cardMatrixSize {
-            var rndCardImg = Int.random(in: 0 ..< images.count)
+        var rndCardImg: Int = Int.random(in: 0 ..< images.count)
+        //tag is the index i in the imageInPlace array
+        for _ in 0..<cardMatrixSize {
+            //TODO: each time rand new places for images
+            //            var rndCardImg = Int.random(in: 0 ..< images.count)
             //            print(rndCardImg)
             //checking if the image is presented twice
-            while (imagesCounter[rndCardImg] >= numOfImageDuplicate) {
+            repeat{
                 rndCardImg = Int.random(in: 0 ..< images.count)
-            }
+                print("random num= \(rndCardImg)")
+                print(images[rndCardImg].description)
+            } while (imagesCounter[rndCardImg] >= numOfImageDuplicate) //if the image already been place twice-> rand different image
+            //                            rndCardImg = Int.random(in: 0 ..< images.count)
+            //            while (imagesCounter[rndCardImg] >= numOfImageDuplicate){
+            //                rndCardImg = Int.random(in: 0 ..< images.count)
+            //            }
+            
             imageInPlace.append((image: images[rndCardImg], isOpen: false))
-            print("----- i ")//TODO: delete
-            print(i)//TODO: delete
-            print(images[rndCardImg].description)
             imagesCounter[rndCardImg] += 1
-            //               print("----- image counter ")
-            //            print( imagesCounter[rndCardImg])
         }
     }
     
@@ -105,21 +104,17 @@ class GameViewController: UIViewController {
             previous.isEnabled = false
             current.isEnabled = false
             
-            print(pairedSuccessfully)//TODO: delete
-            print("MATCH!! ")//TODO: delte
-            //TODO: add score later
-            score += 10
+            //            print(pairedSuccessfully)//TODO: delete
+            //            print("MATCH!! ")//TODO: delte
+            score += 10 //add 10 points when cards are being paired successfully
             game_LBL_score.text = "Score: " + String(score)
         }
-        else {//TODO: handle case if pressed on the same card
-            if(previous.tag != current.tag){
+        else {
+            if(previous.tag != current.tag){ //if user press on two cards that are not a pair and not on the same card twice
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                     self.closeCard(card: previous)
                     self.closeCard(card: current)
                 }
-            }
-            if(previous.tag == current.tag){
-                print("Clicked on the same card")
             }
         }
     }
@@ -168,33 +163,32 @@ class GameViewController: UIViewController {
             setTimer(on: false)
             game_BTN_play.setTitle("YOU WON!\nPlay again", for: .normal)
             game_BTN_play.isHidden = false
-//            isUserWon = true
+            //            isUserWon = true
             isPlaying = false
         }
         else if(numOfMoves == 0){//if he lost -> ran out of moves
             setTimer(on: false)
-//            isUserWon = false
             isPlaying = false
             game_BTN_play.setTitle("YOU LOST\nPlay again", for: .normal)
             game_BTN_play.isHidden = false
         }
-        
     }
+    
     @IBAction func button_clicked(_ sender: UIButton) {
-        
         if(isPlaying) {
             counter += 1 //amount of button clicks
-            print(counter)
+            
             openCard(card: sender)
             
             if(counter % 2 == 0){
-                //TODO: need to handle moves
-                //TODO: handle with other cards open -> while 2 cards are open -> cant open new cards...
                 if(sender != previousButton) {
                     numOfMoves -= 1
                     game_LBL_moves.text = String(numOfMoves)
+                    checkMatch(previous: previousButton, current: sender)
                 }
-                checkMatch(previous: previousButton, current: sender)
+                else{
+                    counter = 1
+                }
             }
             previousButton = sender
         }
