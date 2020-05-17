@@ -183,7 +183,6 @@ class GameViewController: UIViewController {
             previousButton = sender
             checkIfWinner()
         }
-        
     }
     
 }
