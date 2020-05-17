@@ -30,17 +30,17 @@ class GameViewController: UIViewController {
     private var numOfMoves: Int = 20
     //Const
     private let images = [#imageLiteral(resourceName: "ic_chicken") ,#imageLiteral(resourceName: "ic_burger") ,#imageLiteral(resourceName: "ic_fries") ,#imageLiteral(resourceName: "ic_broccoli") ,#imageLiteral(resourceName: "ic_chocolate") ,#imageLiteral(resourceName: "ic_sushi") ,#imageLiteral(resourceName: "ic_cake") ,#imageLiteral(resourceName: "ic_pizza")]
-    private let back_card = #imageLiteral(resourceName: "icon_square")
+    private let backCard = #imageLiteral(resourceName: "ic_back_card")
     private let cardMatrixSize = 16 //4*4
     private let numOfImageDuplicate = 2
+    private let gameMoves = 20
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        initGame()
         setGameLabels()
     }
-    //functions/actions...
+    
     func resetCards() {
         for i in 0..<imagesCounter.count {
             imagesCounter[i] = 0
@@ -57,7 +57,7 @@ class GameViewController: UIViewController {
     func initGame() {
         score = 0
         pairedSuccessfully = 0
-        numOfMoves = 20
+        numOfMoves = gameMoves
         
         setGameLabels()
         resetCards()
@@ -79,11 +79,9 @@ class GameViewController: UIViewController {
             repeat{
                 rndCardImg = Int.random(in: 0 ..< images.count)
             } while (imagesCounter[rndCardImg] >= numOfImageDuplicate); //if the image already been place twice-> rand different image
-            
             //puts in imageInPlace in index (=button tag) the image that has been selected randomly
             imageInPlace.append((image: images[rndCardImg], isOpen: false))
             imagesCounter[rndCardImg] += 1
-            
         }
     }
     
@@ -113,7 +111,7 @@ class GameViewController: UIViewController {
     }
     
     func closeCard(card: UIButton) {
-        card.setImage(back_card, for: .normal)
+        card.setImage(backCard, for: .normal)
         imageInPlace[card.tag].isOpen = false
         UIView.transition(with: card, duration: 0.5, options: .transitionFlipFromRight,
                           animations: nil, completion: nil)
@@ -157,7 +155,6 @@ class GameViewController: UIViewController {
         setTimer(on: false)//pause timer
         game_BTN_play.isHidden = false
         isPlaying = false
-        
         if(isUserWon) {
             game_BTN_play.setTitle("YOU WON!\nPlay again", for: .normal)
         }
@@ -178,13 +175,14 @@ class GameViewController: UIViewController {
                     game_LBL_moves.text = String(numOfMoves)
                     checkMatch(previous: previousButton, current: sender)
                 }
-                else{
+                else{//if the user click on the same card- don't count the number of moves
                     counter = 1
                 }
             }
             previousButton = sender
+            checkIfWinner()
         }
-        checkIfWinner()
+      
     }
     
 }
