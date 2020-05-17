@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina5_9" orientation="portrait" appearance="light"/>
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -12,41 +12,41 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="GameViewController" customModule="memory_game" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background_pink" translatesAutoresizingMaskIntoConstraints="NO" id="42k-qI-KMS">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Xxx-w2-u4Q" userLabel="card matrix view">
-                                <rect key="frame" x="20" y="124" width="335" height="374"/>
+                                <rect key="frame" x="20" y="124" width="374" height="458"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="LVz-85-fgc" userLabel="card line view">
-                                        <rect key="frame" x="0.0" y="0.0" width="335" height="78.666666666666671"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="99.5"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FV9-p9-eeF" userLabel="card">
-                                                <rect key="frame" x="0.0" y="0.0" width="72.666666666666671" height="78.666666666666671"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="82.5" height="99.5"/>
                                                 <state key="normal" image="ic_back_card"/>
                                                 <connections>
                                                     <action selector="button_clicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="csx-eU-bAh"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zTc-lV-9YC" userLabel="card">
-                                                <rect key="frame" x="87.666666666666686" y="0.0" width="72.333333333333314" height="78.666666666666671"/>
+                                                <rect key="frame" x="97.5" y="0.0" width="82" height="99.5"/>
                                                 <state key="normal" image="ic_back_card"/>
                                                 <connections>
                                                     <action selector="button_clicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gs1-qa-t3L"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e7x-th-ulj" userLabel="card">
-                                                <rect key="frame" x="175" y="0.0" width="72.666666666666686" height="78.666666666666671"/>
+                                                <rect key="frame" x="194.5" y="0.0" width="82.5" height="99.5"/>
                                                 <state key="normal" image="ic_back_card"/>
                                                 <connections>
                                                     <action selector="button_clicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ztg-3V-PpA"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QCm-6J-X3s" userLabel="card">
-                                                <rect key="frame" x="262.66666666666669" y="0.0" width="72.333333333333314" height="78.666666666666671"/>
+                                                <rect key="frame" x="292" y="0.0" width="82" height="99.5"/>
                                                 <state key="normal" image="ic_back_card"/>
                                                 <connections>
                                                     <action selector="button_clicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jRA-eX-BR8"/>
@@ -55,31 +55,31 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="bMd-c9-KkG" userLabel="card line view">
-                                        <rect key="frame" x="0.0" y="98.666666666666657" width="335" height="78.333333333333343"/>
+                                        <rect key="frame" x="0.0" y="119.5" width="374" height="99.5"/>
                                         <subviews>
                                             <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tzr-wM-jZv" userLabel="card">
-                                                <rect key="frame" x="0.0" y="0.0" width="72.666666666666671" height="78.333333333333329"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="82.5" height="99.5"/>
                                                 <state key="normal" image="ic_back_card"/>
                                                 <connections>
                                                     <action selector="button_clicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9mw-JI-V9C"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eC4-2V-fBD" userLabel="card">
-                                                <rect key="frame" x="87.666666666666686" y="0.0" width="72.333333333333314" height="78.333333333333329"/>
+                                                <rect key="frame" x="97.5" y="0.0" width="82" height="99.5"/>
                                                 <state key="normal" image="ic_back_card"/>
                                                 <connections>
                                                     <action selector="button_clicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NAF-er-3lF"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ae0-ko-yya" userLabel="card">
-                                                <rect key="frame" x="175" y="0.0" width="72.666666666666686" height="78.333333333333329"/>
+                                                <rect key="frame" x="194.5" y="0.0" width="82.5" height="99.5"/>
                                                 <state key="normal" image="ic_back_card"/>
                                                 <connections>
                                                     <action selector="button_clicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wav-gH-Ihx"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t5p-pL-jYY" userLabel="card">
-                                                <rect key="frame" x="262.66666666666669" y="0.0" width="72.333333333333314" height="78.333333333333329"/>
+                                                <rect key="frame" x="292" y="0.0" width="82" height="99.5"/>
                                                 <state key="normal" image="ic_back_card"/>
                                                 <connections>
                                                     <action selector="button_clicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0Jv-K1-PZK"/>
@@ -88,31 +88,31 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="um7-xS-g1R" userLabel="card line view">
-                                        <rect key="frame" x="0.0" y="197" width="335" height="78.666666666666686"/>
+                                        <rect key="frame" x="0.0" y="239" width="374" height="99.5"/>
                                         <subviews>
                                             <button opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u5k-6a-Jeh" userLabel="card">
-                                                <rect key="frame" x="0.0" y="0.0" width="72.666666666666671" height="78.666666666666671"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="82.5" height="99.5"/>
                                                 <state key="normal" image="ic_back_card"/>
                                                 <connections>
                                                     <action selector="button_clicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7w2-qx-QfV"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="9" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iva-Br-dME" userLabel="card">
-                                                <rect key="frame" x="87.666666666666686" y="0.0" width="72.333333333333314" height="78.666666666666671"/>
+                                                <rect key="frame" x="97.5" y="0.0" width="82" height="99.5"/>
                                                 <state key="normal" image="ic_back_card"/>
                                                 <connections>
                                                     <action selector="button_clicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7UX-cw-aqF"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pce-cE-A6h" userLabel="card">
-                                                <rect key="frame" x="175" y="0.0" width="72.666666666666686" height="78.666666666666671"/>
+                                                <rect key="frame" x="194.5" y="0.0" width="82.5" height="99.5"/>
                                                 <state key="normal" image="ic_back_card"/>
                                                 <connections>
                                                     <action selector="button_clicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wZ3-qr-UfF"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="11" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6jT-qp-j4f" userLabel="card">
-                                                <rect key="frame" x="262.66666666666669" y="0.0" width="72.333333333333314" height="78.666666666666671"/>
+                                                <rect key="frame" x="292" y="0.0" width="82" height="99.5"/>
                                                 <state key="normal" image="ic_back_card"/>
                                                 <connections>
                                                     <action selector="button_clicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JJn-L6-Ep5"/>
@@ -121,31 +121,31 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="yeO-3H-FrQ" userLabel="card line view">
-                                        <rect key="frame" x="0.0" y="295.66666666666669" width="335" height="78.333333333333314"/>
+                                        <rect key="frame" x="0.0" y="358.5" width="374" height="99.5"/>
                                         <subviews>
                                             <button opaque="NO" tag="12" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fEp-WU-zHA" userLabel="card">
-                                                <rect key="frame" x="0.0" y="0.0" width="72.666666666666671" height="78.333333333333329"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="82.5" height="99.5"/>
                                                 <state key="normal" image="ic_back_card"/>
                                                 <connections>
                                                     <action selector="button_clicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cOK-HV-jYc"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="13" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CS3-c9-RSn" userLabel="card">
-                                                <rect key="frame" x="87.666666666666686" y="0.0" width="72.333333333333314" height="78.333333333333329"/>
+                                                <rect key="frame" x="97.5" y="0.0" width="82" height="99.5"/>
                                                 <state key="normal" image="ic_back_card"/>
                                                 <connections>
                                                     <action selector="button_clicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Oq4-8d-0H3"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="14" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gt7-uv-06q" userLabel="card">
-                                                <rect key="frame" x="175" y="0.0" width="72.666666666666686" height="78.333333333333329"/>
+                                                <rect key="frame" x="194.5" y="0.0" width="82.5" height="99.5"/>
                                                 <state key="normal" image="ic_back_card"/>
                                                 <connections>
                                                     <action selector="button_clicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IQF-0e-1Gp"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="15" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mUX-OK-L9s" userLabel="card">
-                                                <rect key="frame" x="262.66666666666669" y="0.0" width="72.333333333333314" height="78.333333333333329"/>
+                                                <rect key="frame" x="292" y="0.0" width="82" height="99.5"/>
                                                 <state key="normal" image="ic_back_card"/>
                                                 <connections>
                                                     <action selector="button_clicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ziI-mb-mhQ"/>
@@ -156,16 +156,16 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tVx-nK-WLl" userLabel="top console Stack View">
-                                <rect key="frame" x="20" y="54.000000000000007" width="335" height="31.333333333333336"/>
+                                <rect key="frame" x="20" y="54" width="374" height="31.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="score: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bu5-tR-JWN" userLabel="score">
-                                        <rect key="frame" x="0.0" y="0.0" width="296.33333333333331" height="31.333333333333332"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="335.5" height="31.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" tag="120" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 S" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ysc-kA-IJ2" userLabel="timer">
-                                        <rect key="frame" x="296.33333333333331" y="0.0" width="38.666666666666686" height="31.333333333333332"/>
+                                        <rect key="frame" x="335.5" y="0.0" width="38.5" height="31.5"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="26"/>
                                         <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                         <nil key="highlightedColor"/>
@@ -173,10 +173,10 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="HLW-xU-gzu" userLabel="console">
-                                <rect key="frame" x="20" y="528" width="335" height="240"/>
+                                <rect key="frame" x="20" y="612" width="374" height="240"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="boX-0z-1xM" userLabel="play btn">
-                                        <rect key="frame" x="0.0" y="0.0" width="335" height="80"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="80"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="35"/>
                                         <state key="normal" title="Play">
                                             <color key="titleColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -188,13 +188,13 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MOVES:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="clz-sr-rRC" userLabel="moves">
-                                        <rect key="frame" x="0.0" y="80" width="335" height="80"/>
+                                        <rect key="frame" x="0.0" y="80" width="374" height="80"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="35"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6KK-sU-0cN" userLabel="moves_amount">
-                                        <rect key="frame" x="0.0" y="160" width="335" height="80"/>
+                                        <rect key="frame" x="0.0" y="160" width="374" height="80"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>

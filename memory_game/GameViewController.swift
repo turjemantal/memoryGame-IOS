@@ -86,7 +86,8 @@ class GameViewController: UIViewController {
     }
     
     func checkMatch(previous: UIButton, current: UIButton){
-        if(imageInPlace[previous.tag].image == imageInPlace[current.tag].image && previous.tag != current.tag && imageInPlace[previous.tag].isOpen && imageInPlace[current.tag].isOpen) {
+        if(imageInPlace[previous.tag].image == imageInPlace[current.tag].image && previous.tag != current.tag && imageInPlace[previous.tag].isOpen && imageInPlace[current.tag].isOpen){
+            //if the images are the same and the tag(=index) of the card is different and the cards are open
             pairedSuccessfully += 1
             previous.isEnabled = false
             current.isEnabled = false
@@ -110,14 +111,14 @@ class GameViewController: UIViewController {
                           animations: nil, completion: nil)
     }
     
-    func closeCard(card: UIButton) {
+    func closeCard(card: UIButton){
         card.setImage(backCard, for: .normal)
         imageInPlace[card.tag].isOpen = false
         UIView.transition(with: card, duration: 0.5, options: .transitionFlipFromRight,
                           animations: nil, completion: nil)
     }
     
-    func setTimer(on: Bool) {
+    func setTimer(on: Bool){
         if(on) {//run timer each second
             var duration = 0
             timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
@@ -130,7 +131,7 @@ class GameViewController: UIViewController {
         }
     }
     
-    @IBAction func clickPlayGame(_ sender: UIButton) {
+    @IBAction func clickPlayGame(_ sender: UIButton){//when play is being clicked
         if(!isPlaying) {
             initGame()
             game_BTN_play.isHidden = true
@@ -142,7 +143,7 @@ class GameViewController: UIViewController {
         }
     }
     
-    func checkIfWinner() {
+    func checkIfWinner(){//check if the user lost or won
         if(pairedSuccessfully == cardMatrixSize/numOfImageDuplicate) {//if the user matched all of the cards-> he wons
             setGameWhenStop(isUserWon: true)
         }
@@ -151,7 +152,7 @@ class GameViewController: UIViewController {
         }
     }
     
-    func setGameWhenStop(isUserWon: Bool) {//if the game is ended
+    func setGameWhenStop(isUserWon: Bool){//if the game is ended
         setTimer(on: false)//pause timer
         game_BTN_play.isHidden = false
         isPlaying = false
@@ -163,14 +164,14 @@ class GameViewController: UIViewController {
         }
     }
     
-    @IBAction func button_clicked(_ sender: UIButton) {
+    @IBAction func button_clicked(_ sender: UIButton){
         if(isPlaying) {
             counter += 1 //amount of button clicks
             
             openCard(card: sender)
             
             if(counter % 2 == 0){
-                if(sender != previousButton) {
+                if(sender != previousButton){
                     numOfMoves -= 1
                     game_LBL_moves.text = String(numOfMoves)
                     checkMatch(previous: previousButton, current: sender)
@@ -182,7 +183,7 @@ class GameViewController: UIViewController {
             previousButton = sender
             checkIfWinner()
         }
-      
+        
     }
     
 }
